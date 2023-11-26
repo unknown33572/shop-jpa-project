@@ -1,7 +1,11 @@
 package com.shop.repository;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.shop.constant.ItemSellStatus;
 import com.shop.entity.Item;
+import com.shop.entity.QItem;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +22,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class ItemRepositoryTest {
   @Autowired // 스프링 컨테이너에 등록된 Bean을 주입
   ItemRepository itemRepository;
+
+  @PersistenceContext
+  EntityManager em;
 
   @Test
   @DisplayName("상품 저장 테스트")
@@ -44,4 +51,15 @@ class ItemRepositoryTest {
       System.out.println(item.toString());
     }
   }
+
+  @Test
+  @DisplayName("@Query를 사용한 상품 조회 테스트")
+  public void findByItemDetailTest() {
+    this.createItemList();
+    List<Item> itemList = itemRepository.findByItemDetail("테스트 상품 상세 설명");
+    for(Item item : itemList) {
+      System.out.println(item.toString());
+    }
+  }
+
 }
