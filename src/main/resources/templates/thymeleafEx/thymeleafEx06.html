@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/layout1}">
+
+<div th:href="@{/thymeleafEx/thymeleafEx06}"
+    th:include="~{fragments/header :: header}"></div>
+
+<div layout:fragment="content">
+  content area
+</div>
+
+<div th:href="@{/thymeleafEx/thymeleafEx06}"
+    th:include="~{fragments/footer :: footer}"></div>
+</html>
