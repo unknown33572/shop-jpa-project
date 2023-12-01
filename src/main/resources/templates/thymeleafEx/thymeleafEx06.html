@@ -3,13 +3,15 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{layouts/layout1}">
 
-<div th:href="@{/thymeleafEx/thymeleafEx06}"
-    th:include="~{fragments/header :: header}"></div>
+<!--<div th:href="@{/thymeleafEx/thymeleafEx06}"-->
+<!--    th:include="~{fragments/header :: header}"></div>-->
+<div layout:fragment="header"></div>
 
 <div layout:fragment="content">
   content area
 </div>
 
-<div th:href="@{/thymeleafEx/thymeleafEx06}"
-    th:include="~{fragments/footer :: footer}"></div>
+<div layout:fragment="footer"></div>
+<!--<div th:href="@{/thymeleafEx/thymeleafEx06}"-->
+<!--    th:include="~{fragments/footer :: footer}"></div>-->
 </html>
